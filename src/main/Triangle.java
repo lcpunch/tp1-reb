@@ -115,6 +115,8 @@ public class Triangle {
 	}
 	
 	boolean estSemblable(Triangle triangle) {
+		
+		/// voir si les naglers sont les memes
 		return true;
 	}
 	
