@@ -6,7 +6,7 @@ public class App {
 		// TODO Auto-generated method stub
 		
 		Triangle t1 = new Triangle(6, 6, 6);
-		Triangle t2 = new Triangle(6,5,5);
+		Triangle t2 = new Triangle(3,4,5);
 		
 		System.out.println(t1.getAire());
 		System.out.println(t1.getAngleA());

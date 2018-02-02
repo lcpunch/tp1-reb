@@ -159,6 +159,14 @@ public class Triangle {
 	    if (this.coteAB == this.coteBC && this.coteBC == this.coteCA) return "Equilaterale";
 	    if (this.coteAB >= this.coteBC + this.coteCA || this.coteCA >= this.coteBC + this.coteCA || this.coteBC >= this.coteAB + this.coteCA) return "Invalide";
 	    if (this.coteBC == this.coteCA || this.coteAB==this.coteBC || this.coteCA==this.coteAB) return "Isosceles";
+	    
+	    if(Math.toDegrees(this.getAngleA()) == 90 
+	    		|| Math.toDegrees(this.getAngleB()) == 90
+	    		|| Math.toDegrees(this.getAngleB()) == 90) {
+	    	
+	    		return "Scalene retangle";
+	    }
+	    
 	    return "Scalene";
 	}
 }
