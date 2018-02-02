@@ -158,7 +158,17 @@ public class Triangle {
 		if (this.coteAB <= 0 || this.coteBC <= 0 || this.coteCA <= 0) return "Invalide"; // added test
 	    if (this.coteAB == this.coteBC && this.coteBC == this.coteCA) return "Equilaterale";
 	    if (this.coteAB >= this.coteBC + this.coteCA || this.coteCA >= this.coteBC + this.coteCA || this.coteBC >= this.coteAB + this.coteCA) return "Invalide";
-	    if (this.coteBC == this.coteCA || this.coteAB==this.coteBC || this.coteCA==this.coteAB) return "Isosceles";
+	    if (this.coteBC == this.coteCA || this.coteAB==this.coteBC || this.coteCA==this.coteAB) {
+	    		
+	    		if(Math.toDegrees(this.getAngleA()) == 90 
+		    		|| Math.toDegrees(this.getAngleB()) == 90
+		    		|| Math.toDegrees(this.getAngleB()) == 90) {
+		    	
+		    		return "Isosceles retangle";
+		    }
+	    	
+	    		return "Isosceles";
+	    }
 	    
 	    if(Math.toDegrees(this.getAngleA()) == 90 
 	    		|| Math.toDegrees(this.getAngleB()) == 90
