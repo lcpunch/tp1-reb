@@ -1,6 +1,12 @@
 package main;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Triangle {
 	
@@ -24,6 +30,24 @@ public class Triangle {
 		this.coteAB = coteAB;
 		this.coteBC = coteBC;
 		this.coteCA = coteCA;
+		
+		this.verifyTriangle();
+		
+	}
+	
+	private void verifyTriangle() {
+		
+		if((this.convertToFormat(this.getAngleA() + this.getAngleB() + this.getAngleC()) != this.convertToFormat(Math.PI)) 
+				|| this.coteAB <= 0
+				|| this.coteBC <= 0
+				|| this.coteCA <= 0) {
+			try {
+				throw new Exception("Les cotes ne font pas un triangle");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public double getAire() {
@@ -51,6 +75,8 @@ public class Triangle {
 		this.coteAB = coteAB;
 		this.coteBC = coteBC;
 		this.coteCA = coteCA;
+		
+		this.verifyTriangle();
 	}
 	
 	public double getAngleA() {
@@ -95,8 +121,8 @@ public class Triangle {
 	
 	private double convertToFormat(double number) {
 		
-		DecimalFormat decimalFormat = new DecimalFormat("0.0000");
-		return Math.abs(Double.parseDouble(decimalFormat.format(number)));
+		//DecimalFormat decimalFormat = new DecimalFormat(".####");
+		return Math.abs(Double.parseDouble(String.format("%.4f", number)));
 		
 	}
 	
@@ -114,13 +140,25 @@ public class Triangle {
 		return true;
 	}
 	
+	
+	
 	boolean estSemblable(Triangle triangle) {
 		
-		/// voir si les naglers sont les memes
-		return true;
+		double[] angles = {this.convertToFormat(this.getAngleA()), this.convertToFormat(this.getAngleB()), this.convertToFormat(this.getAngleC())};
+		double[] otherAngles = {this.convertToFormat(triangle.getAngleA()), this.convertToFormat(triangle.getAngleB()), this.convertToFormat(triangle.getAngleC())};
+
+		Arrays.sort(angles);
+		Arrays.sort(otherAngles);
+		
+		return (Arrays.equals(angles, otherAngles));
 	}
 	
 	public String getDescription() {
-		return "asdf";
+		
+		if (this.coteAB <= 0 || this.coteBC <= 0 || this.coteCA <= 0) return "Invalide"; // added test
+	    if (this.coteAB == this.coteBC && this.coteBC == this.coteCA) return "Equilaterale";
+	    if (this.coteAB >= this.coteBC + this.coteCA || this.coteCA >= this.coteBC + this.coteCA || this.coteBC >= this.coteAB + this.coteCA) return "Invalide";
+	    if (this.coteBC == this.coteCA || this.coteAB==this.coteBC || this.coteCA==this.coteAB) return "Isosceles";
+	    return "Scalene";
 	}
 }
