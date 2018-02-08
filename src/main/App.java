@@ -7,13 +7,15 @@ public class App {
 		
 		Triangle t1 = new Triangle(6, 6, 6);
 		Triangle t2 = new Triangle(3,4,5);
+		Triangle t3 = new Triangle(5,3,4);
+		
 		
 		System.out.println(t1.getAire());
 		System.out.println(t1.getAngleA());
 		System.out.println(t1.getAngleB());
 		System.out.println(t1.getAngleC());
 		
-		if(t2.estEgal(t1)) {
+		if(t2.estEgal(t3)) {
 			System.out.println("cest la meme chose");
 		}
 		
